@@ -1,4 +1,4 @@
-from plotly.graph_objects.layout import Template
+import plotly.graph_objects as go
 import plotly.io as pio
 
 
@@ -26,10 +26,10 @@ back = nord0
 text = nord4
 
 
-colorway = [
+nord_colorway = [
     "#B48EAD",
     "#5E81AC",
-    "#81A1C1",
+    # "#81A1C1",
     "#88C0D0",
     # "#8FBCBB",
     "#A3BE8C",
@@ -38,7 +38,21 @@ colorway = [
     "#BF616A",
 ]
 
-pio.templates["nord"] = Template({
+nord_sequential = [
+    (0, "#B48EAD"),
+    (0.125, "#5E81AC"),
+    (0.25, "#81A1C1"),
+    (0.375, "#88C0D0"),
+    (0.5, "#8FBCBB"),
+    (0.625, "#A3BE8C"),
+    (0.75, "#EBCB8B"),
+    (0.875, "#D08770"),
+    (1, "#BF616A"),
+]
+
+nord_sequentialminus = nord_sequential
+
+pio.templates["nord"] = go.layout.Template(layout={
     "annotationdefaults": {"arrowcolor": text, "arrowhead": 0, "arrowwidth": 1},
     "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}},
     "colorscale": {
@@ -48,47 +62,25 @@ pio.templates["nord"] = Template({
             [0.2, "#de77ae"],
             [0.3, "#f1b6da"],
             [0.4, "#fde0ef"],
-            [0.5, "#f7f7f7"],
+            [0.5, "#f7f7f7"],  # TODO: convert to Nord
             [0.6, "#e6f5d0"],
             [0.7, "#b8e186"],
             [0.8, "#7fbc41"],
             [0.9, "#4d9221"],
             [1, "#276419"],
         ],
-        "sequential": [
-            [0.0, "#0d0887"],
-            [0.1111111111111111, "#46039f"],
-            [0.2222222222222222, "#7201a8"],
-            [0.3333333333333333, "#9c179e"],
-            [0.4444444444444444, "#bd3786"],
-            [0.5555555555555556, "#d8576b"],
-            [0.6666666666666666, "#ed7953"],
-            [0.7777777777777778, "#fb9f3a"],
-            [0.8888888888888888, "#fdca26"],
-            [1.0, "#f0f921"],
-        ],
-        "sequentialminus": [
-            [0.0, "#0d0887"],
-            [0.1111111111111111, "#46039f"],
-            [0.2222222222222222, "#7201a8"],
-            [0.3333333333333333, "#9c179e"],
-            [0.4444444444444444, "#bd3786"],
-            [0.5555555555555556, "#d8576b"],
-            [0.6666666666666666, "#ed7953"],
-            [0.7777777777777778, "#fb9f3a"],
-            [0.8888888888888888, "#fdca26"],
-            [1.0, "#f0f921"],
-        ],
+        "sequentialminus": nord_sequentialminus,
+        "sequential": nord_sequential
     },
-    "colorway": colorway,
+    "colorway": nord_colorway,
     "font": {"color": text},
     "geo": {
         "bgcolor": back,
         "lakecolor": nord10,
-        "landcolor": "rgb(17,17,17)",
+        "landcolor": nord1,
         "showlakes": True,
         "showland": True,
-        "subunitcolor": "#506784",
+        "subunitcolor": nord9,
     },
     "hoverlabel": {"align": "left"},
     "hovermode": "closest",
@@ -96,70 +88,70 @@ pio.templates["nord"] = Template({
     "paper_bgcolor": back,
     "plot_bgcolor": nord1,
     "polar": {
-        "angularaxis": {"gridcolor": "#506784", "linecolor": "#506784", "ticks": ""},
-        "bgcolor": "rgb(17,17,17)",
-        "radialaxis": {"gridcolor": "#506784", "linecolor": "#506784", "ticks": ""},
+        "angularaxis": {"gridcolor": nord2, "linecolor": nord2, "ticks": ""},
+        "bgcolor": nord1,
+        "radialaxis": {"gridcolor": nord2, "linecolor": nord2, "ticks": ""},
     },
     "scene": {
         "xaxis": {
-            "backgroundcolor": "rgb(17,17,17)",
-            "gridcolor": "#506784",
+            "backgroundcolor": nord1,
+            "gridcolor": nord2,
             "gridwidth": 2,
-            "linecolor": "#506784",
+            "linecolor": nord2,
             "showbackground": True,
             "ticks": "",
-            "zerolinecolor": "#C8D4E3",
+            "zerolinecolor": nord3,
         },
         "yaxis": {
-            "backgroundcolor": "rgb(17,17,17)",
-            "gridcolor": "#506784",
+            "backgroundcolor": nord1,
+            "gridcolor": nord2,
             "gridwidth": 2,
-            "linecolor": "#506784",
+            "linecolor": nord2,
             "showbackground": True,
             "ticks": "",
-            "zerolinecolor": "#C8D4E3",
+            "zerolinecolor": nord3,
         },
         "zaxis": {
-            "backgroundcolor": "rgb(17,17,17)",
-            "gridcolor": "#506784",
+            "backgroundcolor": nord1,
+            "gridcolor": nord2,
             "gridwidth": 2,
-            "linecolor": "#506784",
+            "linecolor": nord2,
             "showbackground": True,
             "ticks": "",
-            "zerolinecolor": "#C8D4E3",
+            "zerolinecolor": nord3,
         },
     },
-    "shapedefaults": {"line": {"color": "#f2f5fa"}},
+    "shapedefaults": {"line": {"color": text}},
     "sliderdefaults": {
-        "bgcolor": "#C8D4E3",
-        "bordercolor": "rgb(17,17,17)",
+        "bgcolor": nord1,
+        "bordercolor": nord6,
         "borderwidth": 1,
         "tickwidth": 0,
     },
     "ternary": {
-        "aaxis": {"gridcolor": "#506784", "linecolor": "#506784", "ticks": ""},
-        "baxis": {"gridcolor": "#506784", "linecolor": "#506784", "ticks": ""},
-        "bgcolor": "rgb(17,17,17)",
-        "caxis": {"gridcolor": "#506784", "linecolor": "#506784", "ticks": ""},
+        "aaxis": {"gridcolor": nord2, "linecolor": nord2, "ticks": ""},
+        "baxis": {"gridcolor": nord2, "linecolor": nord2, "ticks": ""},
+        "bgcolor": nord2,
+        "caxis": {"gridcolor": nord2, "linecolor": nord2, "ticks": ""},
     },
     "title": {"x": 0.05},
-    "updatemenudefaults": {"bgcolor": "#506784", "borderwidth": 0},
+    "updatemenudefaults": {"bgcolor": nord1, "borderwidth": 0},
     "xaxis": {
         "automargin": True,
-        "gridcolor": "#283442",
-        "linecolor": "#506784",
+        "gridcolor": nord2,
+        "linecolor": nord2,
         "ticks": "",
         "title": {"standoff": 15},
-        "zerolinecolor": "#283442",
+        "zerolinecolor": nord3,
         "zerolinewidth": 2,
     },
     "yaxis": {
         "automargin": True,
-        "gridcolor": "#283442",
-        "linecolor": "#506784",
+        "gridcolor": nord2,
+        "linecolor": nord2,
         "ticks": "",
         "title": {"standoff": 15},
-        "zerolinecolor": "#283442",
+        "zerolinecolor": nord3,
         "zerolinewidth": 2,
     },
 })
